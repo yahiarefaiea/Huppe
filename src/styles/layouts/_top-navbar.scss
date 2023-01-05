@@ -1,0 +1,235 @@
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  z-index: 999;
+
+  &__mobile {
+    display: none;
+    @include respond(tab-port) {
+      display: block;
+    }
+
+    &__checkbox {
+      display: none;
+    }
+
+    &__button {
+      background-color: $color-white;
+      height: 7rem;
+      width: 7rem;
+      position: fixed;
+      top: 6rem;
+      right: 6rem;
+      border-radius: 50%;
+      z-index: 2000;
+      box-shadow: 0 1rem 3rem rgba($color-primary, 0.1);
+      text-align: center;
+      cursor: pointer;
+
+      @include respond(tab-port) {
+        top: 3rem;
+        right: 3rem;
+      }
+    }
+
+    &__background {
+      height: 6rem;
+      width: 6rem;
+      border-radius: 50%;
+      position: fixed;
+      top: 6.5rem;
+      right: 6.5rem;
+      background: $color-primary;
+      z-index: 1000;
+      transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+
+      @include respond(tab-port) {
+        top: 3.5rem;
+        right: 3.5rem;
+      }
+    }
+
+    &__nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1500;
+
+      height: 0;
+      opacity: 0;
+      width: 0;
+      transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    &__list {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      list-style: none;
+      text-align: center;
+      width: 100%;
+    }
+
+    &__item {
+      margin: 1rem;
+    }
+
+    &__link {
+      &:link,
+      &:visited {
+        display: inline-block;
+        font-size: 3rem;
+        font-weight: 300;
+        padding: 1rem 2rem;
+        color: $color-white;
+        text-decoration: none;
+        text-transform: uppercase;
+        background-image: linear-gradient(
+          120deg,
+          transparent 0%,
+          transparent 50%,
+          $color-white 50%
+        );
+        background-size: 220%;
+        transition: all 0.4s;
+
+        span {
+          margin-right: 1.5rem;
+          display: inline-block;
+        }
+      }
+
+      &:hover,
+      &:active {
+        background-position: 100%;
+        color: $color-primary;
+        transform: translateX(1rem);
+      }
+    }
+
+    //FUNCTIONALITY
+    &__checkbox:checked ~ &__background {
+      transform: scale(80);
+    }
+
+    &__checkbox:checked ~ &__nav {
+      opacity: 1;
+      width: 100%;
+      height: 100vh;
+    }
+
+    //ICON
+    &__icon {
+      position: relative;
+      margin-top: 3.5rem;
+
+      &,
+      &::before,
+      &::after {
+        width: 3rem;
+        height: 2px;
+        background-color: $color-gray;
+        display: inline-block;
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        transition: all 0.2s;
+      }
+
+      &::before {
+        top: -0.8rem;
+      }
+      &::after {
+        top: 0.8rem;
+      }
+    }
+
+    &__button:hover &__icon::before {
+      top: -1rem;
+    }
+
+    &__button:hover &__icon::after {
+      top: 1rem;
+    }
+
+    &__checkbox:checked + &__button &__icon {
+      background-color: transparent;
+    }
+
+    &__checkbox:checked + &__button &__icon::before {
+      top: 0;
+      transform: rotate(135deg);
+    }
+
+    &__checkbox:checked + &__button &__icon::after {
+      top: 0;
+      transform: rotate(-135deg);
+    }
+  }
+
+  &__pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    @include respond(tab-port) {
+      display: none;
+    }
+
+    &-link {
+      font-size: 1.3rem;
+      font-weight: light;
+      text-transform: lowercase;
+      cursor: pointer;
+
+      &:hover .nav__pages-link-title {
+        opacity: 1;
+      }
+
+      &-title {
+        white-space: nowrap;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+      }
+
+      a {
+        color: $color-white;
+      }
+
+      .m-circle {
+        margin-left: calc((100% - 17px) / 2);
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  &__social {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    @include respond(tab-port) {
+      display: none;
+    }
+
+    &-link {
+      -webkit-filter: grayscale(100%) brightness(100); /* Safari 6.0 - 9.0 */
+      filter: grayscale(100%) brightness(100);
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      &:hover {
+        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.m-circle {
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  border: 2px solid $color-white;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+}
+// FUNCTIONALTY
+.nav__pages-link:hover .m-circle {
+  background: $color-white;
+}

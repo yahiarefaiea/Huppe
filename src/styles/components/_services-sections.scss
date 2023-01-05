@@ -1,0 +1,95 @@
+.section {
+  &-hero {
+    &__content {
+      color: $color-white;
+      height: 85vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-left: 10rem;
+      flex-direction: column;
+      @include backgroundImage("/public/files/service-bg.png");
+      @include respond(tab-port) {
+        padding: 3rem;
+        align-items: flex-start;
+      }
+
+      h1 {
+        white-space: nowrap;
+        font-size: 6rem;
+        padding-bottom: 2rem;
+        font-weight: lighter;
+      }
+      p {
+        font-size: 1.5rem;
+        font-weight: lighter;
+        max-width: 80rem;
+        line-height: 1.5;
+      }
+    }
+  }
+  &-services {
+    &__wrapper {
+      width: 100%;
+      min-height: 70vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      flex-wrap: wrap;
+      text-align: center;
+      @include respond(tab-port) {
+        &:nth-child(2) &-content {
+          order: 2;
+        }
+        gap: 30px;
+        padding-bottom: 30px;
+      }
+
+      img {
+        flex: 0 0 50%;
+        width: 50%;
+        object-fit: cover;
+        object-position: center;
+        @include respond(tab-port) {
+          flex: 0 0 100%;
+          width: 100%;
+        }
+      }
+      &-content {
+        flex: 0 0 50%;
+        width: 50%;
+        @include respond(tab-port) {
+          flex: 0 0 100%;
+          width: 100%;
+        }
+        color: $color-white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 25px;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          color: #000;
+          background: $color-white;
+        }
+
+        p {
+          font-size: 3.2rem;
+          font-weight: lighter;
+        }
+        ul {
+          li {
+            font-size: 1.9rem;
+            font-weight: lighter;
+            &:not(:last-child) {
+              padding-bottom: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

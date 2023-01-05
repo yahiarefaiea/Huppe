@@ -1,0 +1,25 @@
+.bg-video {
+  position: absolute;
+  top: -52px;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+.bg-video__about {
+  position: absolute;
+  left: 0;
+  top: 15vh;
+  width: 100%;
+  z-index: -1;
+  height: 85vh;
+  object-fit: cover;
+}
+.play-click {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  cursor: pointer;
+}
