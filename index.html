@@ -129,6 +129,7 @@
   </header>
 
   <main class="section-about">
+    <div class="container">
     <article class="section-about__details article-1">
       <h4 class="section-about__details-title">WHO WE ARE</h4>
       <p class="section-about__details-descr">
@@ -150,9 +151,11 @@
         Take a closer look......
       </a>
     </article>
+    </div>
   </main>
 
   <section class="section-services">
+    <div class="container">
     <div class="section__head">
       <h4>SERVICES | </h4>
       <p>With high-impact strategies, win-win partnerships, and compelling content we will exceed your expectations!
@@ -365,17 +368,20 @@
     <a href="" class="section-services__link">
       View all Services
     </a>
+    </div>
   </section>
 
   <section class="section-portfolio">
+    <div class="container">
     <div class="section__head">
       <h4>PORTFOLIO | </h4>
-      <p>Huppé and Co – a name that is trusted by our clients worldwide.
+      <p>Huppé and Co – a name that is trusted by our clients worldwide.<br>
         Dive into our vision.
       </p>
     </div>
 
     <div id="portfolio-container" class="section-portfolio__projects">
+      <div class="section-portfolio__projects-container">
       <div data-videosrc="./public/files/Zeisha.mp4" data-imagesrc="./public/files/Zeisha.png"
         class="portfolio section-portfolio__projects-wrapper">
         <video autoplay muted loop>
@@ -384,7 +390,9 @@
         <img src="./public/files/Zeisha.png">
         <p>Zeisha</p>
       </div>
+      </div>
 
+      <div class="section-portfolio__projects-container">
       <div data-videosrc="./public/files/The Hydrologist.mp4" data-imagesrc="./public/files/The Hydrologist.png"
         class="portfolio section-portfolio__projects-wrapper">
         <video autoplay muted loop>
@@ -393,12 +401,16 @@
         <img src="./public/files/The Hydrologist.png">
         <p>The Hydrologist</p>
       </div>
+      </div>
 
+      <div class="section-portfolio__projects-container">
       <div data-imagesrc="./public/files/Maison75.png" class="section-portfolio__projects-wrapper">
         <img src="./public/files/Maison75.png">
         <p>Maison</p>
       </div>
+      </div>
 
+      <div class="section-portfolio__projects-container">
       <div data-videosrc="./public/files/STORi.mp4" data-imagesrc="./public/files/STORi.png"
         class="portfolio section-portfolio__projects-wrapper">
         <video autoplay muted loop>
@@ -407,7 +419,9 @@
         <img src="./public/files/STORi.png">
         <p>STORi</p>
       </div>
+      </div>
 
+      <div class="section-portfolio__projects-container">
       <div data-videosrc="./public/files/Morachi.mp4" data-imagesrc="./public/files/Morachi.png"
         class="portfolio section-portfolio__projects-wrapper">
         <video autoplay muted loop>
@@ -416,7 +430,9 @@
         <img src="./public/files/Morachi.png">
         <p>Morachi</p>
       </div>
+      </div>
 
+      <div class="section-portfolio__projects-container">
       <div data-videosrc="./public/files/Maaestra Services.mp4" data-imagesrc="./public/files/Maaestra Services.png"
         class="portfolio section-portfolio__projects-wrapper">
         <video autoplay muted loop>
@@ -425,6 +441,8 @@
         <img src="./public/files/Maaestra Services.png">
         <p>Maaestra Services</p>
       </div>
+      </div>
+    </div>
     </div>
   </section>
 
@@ -506,8 +524,174 @@
       </linearGradient>
     </defs>
   </svg> -->
+  
+  <!-- <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 4686">
+    <defs>
+      <style>
+        .cls-1 {
+          fill: none;
+          stroke-width: 4.03px;
+          stroke: url("#linear-gradient");
+        }
+      </style>
+      <linearGradient id="linear-gradient" x1="583.64" y1="-1238.59" x2="583.64" y2="-4897.78" gradientTransform="matrix(1, 0, 0, -1, 0, -841.89)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff"/><stop offset="0.34" stop-color="#ffc700" stop-opacity="0.84"/><stop offset="0.69" stop-color="#ff2929"/><stop offset="1" stop-color="#fff"/></linearGradient>
+    </defs>
+    <title>Artboard 1</title>
+    <path class="cls-1" d="M905.14,396.7v538l-580.5,195.4,122,204,612,79.49V2238.3h-950V4053.87h347"/>
+  </svg> -->
+
+  <style>
+    /* html, body {
+      max-width: 1280px;
+      position: relative;
+    }
+    @media (min-width: 1280px) {
+      html, body {
+        background-color: red;
+      }
+    } */
+    #Layer_1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* container */
+    .section-about,
+    .section-services,
+    .section-portfolio {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    .container {
+      max-width: 798px;
+      margin: 0 auto;
+    }
+
+    /* base */
+    .link-btn {
+      font-size: 16px;
+      line-height: 16.5px;
+    }
+    .section__head h4 {
+      font-size: 33px;
+      line-height: 33.99px;
+    }
+    .section__head p {
+      font-size: 14px;
+      line-height: 14.42px;
+    }
+
+    /* section-about */
+    .section-about__details {
+      gap: 25px;
+    }
+    .section-about__details:nth-child(2) {
+      padding-top: 68px;
+    }
+    .section-about__details-title {
+      font-size: 30px;
+      line-height: 30.9px;
+    }
+    .section-about__details-descr {
+      font-size: 16px;
+      line-height: 16.5px;
+      width: 55%;
+    }
+
+    /* section-services */
+    .section-services .swiper {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .section-services__list-service {
+      box-sizing: border-box;
+      display: block;
+      padding: 0;
+      padding-top: 72px;
+      min-height: auto;
+      height: 571px;
+    }
+    .section-services__list-service h4 {
+      font-size: 33px;
+      line-height: 33.99px;
+      letter-spacing: 0;
+      font-weight: 400;
+    }
+    .section-services__list-service-items {
+      display: block;
+      padding: 0 10px;
+      padding-top: 50px;
+    }
+    .section-services__list-service-items p {
+      font-size: 20px;
+      /* white-space: nowrap; */
+      padding: 12.5px 0;
+      letter-spacing: 0;
+    }
+    .section-services__link {
+      font-size: 16px;
+      line-height: 16.5px;
+    }
+
+    /* section-portfolio */
+    .section-portfolio__projects {
+      gap: 0;
+      padding-top: 12px;
+      margin: 0 -9px;
+    }
+    .section-portfolio__projects-container {
+      width: 33.33%;
+      padding: 9px;
+    }
+    .section-portfolio__projects-wrapper {
+      max-width: auto;
+    }
+
+    /* section-contact */
+    .section-contact {
+      padding: 0;
+      padding-top: 234px;
+      height: auto;
+    }
+    .section-contact p:first-child {
+      font-size: 34px;
+      line-height: 35px;
+    }
+  </style>
 
   <script type="module" src="/main.js"></script>
+  <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+  <script src="/DrawSVGPlugin.3.10.4.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script>
+    console.clear();
+    var animation;
+
+    // gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
+    gsap.set("#Layer_1 > path", {drawSVG: 0});
+
+    animation = gsap.to("#Layer_1 > path", {
+      scrollTrigger: {
+        trigger: "#Layer_1",
+        start: "top 0%",
+        end: 'bottom 100%',
+        scrub: 1,
+        // markers: true
+      },
+      duration: 1,
+      ease: "none",
+      // immediateRender: true,
+      drawSVG: '100%'
+      // motionPath: {
+      //   path: "#motionPath",
+      //   align: "#motionPath",
+      //   alignOrigin: [0.5, 0.5],
+      //   autoRotate: 90,
+      // }
+    });
+  </script>
 </body>
 
 </html>
