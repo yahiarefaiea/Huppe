@@ -745,6 +745,13 @@
       else delay -= charStagger * (charsArray[j].length);
       let delayAfter = delay + charStagger * (charsArray[j].length);
       let length = delayAfter - delay;
+
+      timing.push({
+        delay: (delay) / charStagger,
+        delayAfter: (delayAfter) / charStagger,
+        length: (length) / charStagger,
+        complete: (charTime + delayAfter + length) / charStagger,
+      });
     });
 
     // sentences
