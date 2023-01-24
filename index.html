@@ -747,10 +747,10 @@
       let length = delayAfter - delay;
 
       timing.push({
-        delay: (delay) / charStagger,
-        delayAfter: (delayAfter) / charStagger,
-        length: (length) / charStagger,
-        complete: (charTime + delayAfter + length) / charStagger,
+        delay: delay,
+        delayAfter: delayAfter,
+        length: length,
+        complete: charTime + delayAfter + length
       });
     });
 
