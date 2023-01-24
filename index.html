@@ -878,6 +878,7 @@
       }
     });
     
+    // move sentences, line, and logo on scroll
     timeline.fromTo(gsap.utils.toArray([
       sentences[sentences.length - 1],
       lineContainer,
@@ -893,6 +894,7 @@
       }
     });
 
+    // move wrapper on scroll
     const h = window.innerHeight - 604.5;
     timeline.fromTo(wrapper, {y: 0 + h}, {
       duration: 1.5,
