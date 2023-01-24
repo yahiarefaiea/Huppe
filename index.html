@@ -712,23 +712,23 @@
       defaults: {ease: 'none'}
     });
 
+    const timing = [];
     const charsArray = [];
-    const sentences = document.querySelectorAll('#we-raise-your-value, #catalyst-for-change, #co-creator-of-vision, #your-change-agent');
+    const charTime = 200;
+    const charStagger = 50;
+    const sentencesSelector = [
+      '#we-raise-your-value',
+      '#catalyst-for-change',
+      '#co-creator-of-vision',
+      '#your-change-agent'
+    ];
+    const sentences = document.querySelectorAll(sentencesSelector.toString());
     sentences.forEach((sentence) => {
       charsArray.push(sentence.querySelectorAll('.cls-2 > .cls-3'));
     });
     const charsAll = gsap.utils.toArray(charsArray);
     const lineContainer = document.querySelector('#line-path');
     const line = document.querySelector('#line-path > path');
-    const charTime = 200;
-    const charStagger = 50;
-    const myMath = charStagger * charsAll.length;
-    const lineContainerOffset = (myMath + charTime)*2 - (charTime*0.5);
-    const bodyOffset = lineContainerOffset + 947 - 350 + 7;
-    gsap.set('#main-header', {height: bodyOffset});
-    gsap.set(charsAll, {drawSVG: 0});
-    gsap.set(lineContainer, {top: lineContainerOffset});
-    gsap.set(line, {drawSVG: 0});
 
     // timing
     sentences.forEach((sentence, j) => {
