@@ -541,7 +541,6 @@
     #main-wrapper {
       z-index: 50;
       position: fixed;
-      background-color: red;
       top: 604.5px;
       left: 50%;
       margin-left: -399px;
@@ -594,10 +593,6 @@
     #co-creator-of-vision .cls-3,
     #your-change-agent .cls-3 {
       stroke: white;
-    }
-
-    #your-change-agent {
-      background-color: rgba(251, 255, 0, 0.4);
     }
 
     /* container */
@@ -736,18 +731,12 @@
     }
   </style>
 
-  <div id="consoler" style="position: fixed; background-color: skyblue; top: 0; right: 0;font-size: 18px; padding: 4px 20px;">Hiiiiiiiii</div>
-
   <script type="module" src="/main.js"></script>
   <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
   <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
   <script src="/DrawSVGPlugin.3.10.4.min.js"></script>
   <script>
     window.addEventListener('load', () => {
-    window.addEventListener('scroll', function() {
-      document.getElementById('consoler').innerHTML = Math.round(this.scrollY / 50);
-    });
-
     console.clear();
     gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
     var timeline = gsap.timeline({
@@ -768,10 +757,11 @@
     const logoSelector = '.section-hero__title';
     const sectionsSelector = [
       '.section-about .section-about__details',
-      '.section-services .section__head',
-      '.section-services .swiper-slide',
+      '.section-services',
       '.section-portfolio .section__head',
-      '.section-portfolio .section-portfolio__projects-container'
+      '.section-portfolio .section-portfolio__projects-container',
+      '.section-contact p:first-child',
+      '.section-contact .section-contact__qrcode'
     ];
     const sentences = document.querySelectorAll(sentencesSelector.toString());
     sentences.forEach((sentence) => {
@@ -814,12 +804,6 @@
     gsap.set('#main-header', {height: bodyOffset + wrapper.offsetHeight});
     setTimeout(() => {
       gsap.set('#main-header', {height: bodyOffset + wrapper.offsetHeight});
-      gsap.utils.toArray(sections).forEach((section) => {
-        let offset = section.offsetTop;
-        // console.log(section)
-        // console.log('offset: ' + offset)
-        // console.log('=====')
-      });
     }, 1500);
     gsap.set(charsAll, {drawSVG: 0});
     gsap.set(lineContainer, {top: lineContainerOffset});
@@ -831,12 +815,6 @@
       const chars = sentence.querySelectorAll('.cls-2 > .cls-3');
       let delay = timing[j].delay;
       let delayAfter = timing[j].delayAfter;
-      console.log({
-        delay: timing[j].delay / charStagger,
-        delayAfter: timing[j].delayAfter / charStagger,
-        length: timing[j].length / charStagger,
-        complete: timing[j].complete / charStagger,
-      });
       gsap.utils.toArray(chars).forEach((char, i) => {
         // show sentence
         timeline.fromTo(char, {drawSVG: 0}, {
@@ -907,38 +885,20 @@
       }
     });
 
-    setTimeout(() => {
-      // const offset = {}
-
-      // animate sections
-      gsap.utils.toArray(sections).forEach((section) => {
-        let offset = section.offsetTop;
-        console.log(section)
-        console.log('offset: ' + offset)
-        console.log('=====')
-        
-        timeline.fromTo(section, {opacity: 0}, {
-          duration: 1.5,
-          opacity: 1,
-          scrollTrigger: {
-            // trigger: 'body',
-            trigger: section,
-            start: offset,
-            // start: 'top 70%',
-            end: '+=200',
-            scrub: 1,
-            onEnter: function(e) {
-              console.log('entering')
-              // console.log(e)
-            },
-            onLeave: function(e) {
-              console.log('leaving')
-              // console.log(e)
-            }
-          }
-        });
+    // animate sections
+    gsap.utils.toArray(sections).forEach((section) => {
+      let offset = section.offsetTop;
+      timeline.fromTo(section, {opacity: 0}, {
+        duration: 1.5,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: 'body',
+          start: charsMath + offset,
+          end: '+=200',
+          scrub: 1
+        }
       });
-    }, 1500);
+    });
     });
   </script>
 </body>
