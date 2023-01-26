@@ -234,7 +234,8 @@
           letter-spacing: 2px;
           padding-top: 8px;
           display: none;
-          @include respond(tab-port) {
+          // @include respond(tab-port) {
+          @media (max-width: 838px) {
             display: block;
           }
         }
