@@ -524,6 +524,7 @@
 
   <!-- line-path -->
   <svg id="line-path" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 3300"><defs><style>.cls-1{fill:none;stroke-width:3.5px;stroke:url(#linear-gradient);}</style><linearGradient id="linear-gradient" x1="640" y1="370" x2="640" y2="3252" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff"/><stop offset="0.34" stop-color="#ffc700" stop-opacity="0.84"/><stop offset="0.69" stop-color="#ff2929"/><stop offset="1" stop-color="#fff"/></linearGradient></defs><title>line-path</title><path class="cls-1" d="M956.5,370V749L381,896.46l122,154,612,60v824H165V3115H504.75A135.25,135.25,0,1,1,640,3250.25,135.25,135.25,0,0,1,504.75,3115"/></svg>
+  <svg id="line-path-sm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 390 5812"><defs><style>.cls-1{fill:none;stroke-width:3.5px;stroke:url(#linear-gradient);}</style><linearGradient id="linear-gradient" x1="197" y1="370" x2="197" y2="5041.88" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff"/><stop offset="0.34" stop-color="#ffc700" stop-opacity="0.84"/><stop offset="0.69" stop-color="#ff2929"/><stop offset="1" stop-color="#fff"/></linearGradient></defs><title>line-path-sm</title><path class="cls-1" d="M364,370V860H30V2083H364V4904.88H330.25A135.25,135.25,0,1,0,195,5040.13a135.25,135.25,0,0,0,135.25-135.25"/></svg>
   
   <style>
     .nav {
@@ -545,7 +546,8 @@
       left: 50%;
       margin-left: -399px;
     }
-    #line-path {
+    #line-path,
+    #line-path-sm {
       z-index: 1000;
       position: fixed;
       top: 0;
@@ -554,6 +556,14 @@
       height: 3300px;
       transform: translateX(-50%);
       pointer-events: none;
+    }
+    #line-path {
+      width: 1280px;
+      height: 3300px;
+    }
+    #line-path-sm {
+      width: 390px;
+      height: 5812px;
     }
 
     #main-header {
@@ -729,6 +739,46 @@
       padding-top: 0;
       margin-top: 234px;
     }
+
+    /* responsive */
+    @media (min-width: 838px) {
+      #line-path {
+        opacity: 1;
+      }
+      #line-path-sm {
+        opacity: 0;
+      }
+    }
+    @media (max-width: 838px) {
+      #we-raise-your-value,
+      #catalyst-for-change,
+      #co-creator-of-vision,
+      #your-change-agent {
+        transform: scale(0.535);
+      }
+      #line-path {
+        opacity: 0;
+      }
+      #line-path-sm {
+        opacity: 1;
+      }
+      
+      #main-wrapper {
+        margin-left: -139px;
+      }
+      .container {
+        max-width: 278px;
+      }
+      .section-about__details-descr {
+        width: 100%;
+      }
+      .section-portfolio__projects-container {
+        width: 100%;
+      }
+      .footer-sub ul li, .footer-sub ul li a {
+        text-align: center;
+      }
+    }
   </style>
 
   <script type="module" src="/main.js"></script>
@@ -770,6 +820,8 @@
     const charsAll = gsap.utils.toArray(charsArray);
     const lineContainer = document.querySelector('#line-path');
     const line = document.querySelector('#line-path > path');
+    const lineSMContainer = document.querySelector('#line-path-sm');
+    const lineSM = document.querySelector('#line-path-sm > path');
     const wrapper = document.querySelector(wrapperSelector);
     const sections = document.querySelectorAll(sectionsSelector.toString());
 
@@ -806,8 +858,8 @@
       gsap.set('#main-header', {height: bodyOffset + wrapper.offsetHeight});
     }, 1500);
     gsap.set(charsAll, {drawSVG: 0});
-    gsap.set(lineContainer, {top: lineContainerOffset});
-    gsap.set(line, {drawSVG: 0});
+    gsap.set([lineContainer, lineSMContainer], {top: lineContainerOffset});
+    gsap.set([line, lineSM], {drawSVG: 0});
     gsap.set(sectionsSelector, {opacity: 0});
 
     // sentences
@@ -845,7 +897,7 @@
     });
     
     // draw line path
-    timeline.to(line, {
+    timeline.to([line, lineSM], {
       duration: 1.5,
       drawSVG: '100%',
       scrollTrigger: {
@@ -860,6 +912,7 @@
     timeline.fromTo(gsap.utils.toArray([
       sentences[sentences.length - 1],
       lineContainer,
+      lineSMContainer,
       logoSelector
     ]), {y: 0}, {
       duration: 1.5,
