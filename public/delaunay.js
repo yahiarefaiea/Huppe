@@ -1693,7 +1693,7 @@ c);e.bind(this.domElement,"transitionend",c);e.bind(this.domElement,"oTransition
   // Global Properties
   //------------------------------
   var center = FSS.Vector3.create();
-  var container = document.getElementById('container');
+  var container = document.getElementById('delaunay');
   var controls = document.getElementById('controls');
   var output = document.getElementById('output');
   var renderer, scene, mesh, geometry, material;
