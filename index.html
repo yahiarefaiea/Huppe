@@ -20,6 +20,7 @@
     Your browser does not support HTML5 video.
   </video> -->
 
+  <div id="header-shadow"></div>
   <header id="main-header" class="section-hero">
     <nav class="nav">
       <div class="nav__logo">
@@ -547,6 +548,17 @@
     }
     .section-hero {
       background-image: none;
+    }
+
+    #header-shadow {
+      z-index: 500;
+      position: fixed;
+      top: -50px;
+      left: -50px;
+      right: -50px;
+      height: 250px;
+      background-image: linear-gradient(black 0%, black 20%, transparent 100%);
+      filter: blur(25px);
     }
 
     .nav {
