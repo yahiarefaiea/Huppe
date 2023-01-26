@@ -563,11 +563,15 @@
 
     .nav {
       position: fixed;
-      max-width: 1000px;
+      max-width: 1200px;
     }
     .section-hero__title {
       position: fixed;
       padding-top: 199px;
+      white-space: nowrap;
+    }
+    .section-hero__title-sub {
+      letter-spacing: 10.3px;
     }
     .section-hero {
       height: 947px;
@@ -813,6 +817,21 @@
         text-align: center;
       }
     }
+    @media (max-width: 400px) {
+      .section-hero__title {
+        transform: scale(0.84);
+      }
+    }
+
+    /* visibility */
+    #line-path > path,
+    #line-path-sm > path,
+    #we-raise-your-value .cls-2 > .cls-3,
+    #catalyst-for-change .cls-2 > .cls-3,
+    #co-creator-of-vision .cls-2 > .cls-3,
+    #your-change-agent .cls-2 > .cls-3 {
+      visibility: hidden;
+    }
   </style>
 
   <script type="module" src="/main.js"></script>
@@ -894,9 +913,9 @@
     setTimeout(() => {
       gsap.set('#main-header', {height: bodyOffset + wrapper.offsetHeight});
     }, 1500);
-    gsap.set(charsAll, {drawSVG: 0});
+    gsap.set(charsAll, {drawSVG: 0, visibility: 'visible'});
     gsap.set([lineContainer, lineSMContainer], {top: lineContainerOffset});
-    gsap.set([line, lineSM], {drawSVG: 0});
+    gsap.set([line, lineSM], {drawSVG: 0, visibility: 'visible'});
     gsap.set(delaunay, {transformOrigin: 'center bottom'});
     gsap.set(sections, {opacity: 0});
 
@@ -941,7 +960,7 @@
       scrollTrigger: {
         trigger: 'body',
         start: charsMath,
-        end: `bottom 100%`,
+        end: window.innerWidth <= 838 ? 'bottom 110%' : `bottom 100%`,
         scrub: 1
       }
     });
