@@ -1582,7 +1582,8 @@ c);e.bind(this.domElement,"transitionend",c);e.bind(this.domElement,"oTransition
   var MESH = {
     width: 1.2,
     height: 1.2,
-    slices: 250,
+    // slices: 250,
+    slices: 100,
     ambient: '#555555',
     diffuse: '#FFFFFF'
   };
@@ -1595,8 +1596,10 @@ c);e.bind(this.domElement,"transitionend",c);e.bind(this.domElement,"oTransition
     xPos : 0,
     yPos : 200,
     zOffset: 100,
+    // ambient: '#880066',
+    // diffuse: '#FF8800',
     ambient: '#202020',
-    diffuse: '#B9B9B9',
+    diffuse: '#A3A3A3',
     pickedup :true,
     proxy : false,
     currIndex : 0
@@ -1794,7 +1797,8 @@ c);e.bind(this.domElement,"transitionend",c);e.bind(this.domElement,"oTransition
 
   function addEventListeners() {
     window.addEventListener('resize', onWindowResize);
-    container.addEventListener('mousemove', onMouseMove);
+    // container.addEventListener('mousemove', onMouseMove);
+    document.querySelector('body').addEventListener('mousemove', onMouseMove);
   }
 
   function addControls() {

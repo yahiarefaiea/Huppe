@@ -513,7 +513,7 @@
   </footer>
   </div>
 
-  <!-- https://codepen.io/msurguy/pen/wvGgzN?editors=0110 -->
+  <!-- https://codepen.io/msurguy/pen/wvGgzN -->
   <div id="delaunay">
     <div id="output"></div>
   </div>
@@ -534,11 +534,13 @@
   
   <style>
     #delaunay {
+      z-index: -10;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100vh;
+      height: 200vh;
+      pointer-events: none;
     }
     #controls {
       display: none;
@@ -824,6 +826,7 @@
       '#co-creator-of-vision',
       '#your-change-agent'
     ];
+    const delaunaySelector = '#delaunay';
     const wrapperSelector = '#main-wrapper';
     const logoSelector = '.section-hero__title';
     const sectionsSelector = [
@@ -843,6 +846,7 @@
     const line = document.querySelector('#line-path > path');
     const lineSMContainer = document.querySelector('#line-path-sm');
     const lineSM = document.querySelector('#line-path-sm > path');
+    const delaunay = document.querySelector(delaunaySelector);
     const wrapper = document.querySelector(wrapperSelector);
     const sections = document.querySelectorAll(sectionsSelector.toString());
 
@@ -881,7 +885,8 @@
     gsap.set(charsAll, {drawSVG: 0});
     gsap.set([lineContainer, lineSMContainer], {top: lineContainerOffset});
     gsap.set([line, lineSM], {drawSVG: 0});
-    gsap.set(sectionsSelector, {opacity: 0});
+    gsap.set(delaunay, {transformOrigin: 'center bottom'});
+    gsap.set(sections, {opacity: 0});
 
     // sentences
     sentences.forEach((sentence, j) => {
@@ -955,6 +960,19 @@
         trigger: 'body',
         start: charsMath - h,
         end: '+=3300',
+        scrub: 1
+      }
+    });
+    
+    // move delaunay on scroll
+    timeline.fromTo(delaunay, {y: 0, scale: 1}, {
+      duration: 1.5,
+      y: -window.innerHeight,
+      scale: 1.2,
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top 0%',
+        end: charsMath,
         scrub: 1
       }
     });
