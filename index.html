@@ -896,6 +896,7 @@
     sentences.forEach((sentence, j) => {
       let delay = 0;
       for(let k = 0; k <= j; k++) {
+        delay += k !== 0 ? 1500 : 0;
         delay += charStagger * (charsArray[k].length);
         if(j < sentences.length - 1 || k < sentences.length - 1)
           delay += charStagger * (charsArray[k + 1].length);
@@ -903,9 +904,10 @@
       }
       delay -= charStagger * (charsArray[j].length);
       if(j < sentences.length - 1)
-        delay -= charStagger * (charsArray[j + 1].length);
+      delay -= charStagger * (charsArray[j + 1].length);
       else delay -= charStagger * (charsArray[j].length);
       let delayAfter = delay + charStagger * (charsArray[j].length);
+      delayAfter += j < sentences.length - 1 ? 1500 : 0;
       let length = delayAfter - delay;
 
       timing.push({
