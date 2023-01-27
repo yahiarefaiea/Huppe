@@ -625,6 +625,7 @@
       top: 350px;
       left: 50%;
       height: 56px;
+      pointer-events: none;
     }
 
     #we-raise-your-value {
@@ -839,6 +840,20 @@
     #co-creator-of-vision .cls-2 > .cls-3,
     #your-change-agent .cls-2 > .cls-3 {
       visibility: hidden;
+    }
+
+    /* sass media queries fix */
+    @media only screen and (max-width: 56.25em) {
+      .section__head {
+        align-items: center;
+        flex-direction: row;
+      }
+    }
+    @media (max-width: 838px) {
+      .section__head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 

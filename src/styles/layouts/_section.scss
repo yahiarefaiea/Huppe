@@ -15,8 +15,7 @@
     justify-content: flex-start;
     gap: 1.5rem;
     text-align: left;
-    // @include respond(tab-port) {
-    @media (max-width: 838px) {
+    @include respond(tab-port) {
       flex-direction: column;
       align-items: flex-start;
       p {
