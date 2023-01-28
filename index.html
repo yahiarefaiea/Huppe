@@ -922,14 +922,16 @@
       delay -= charStagger * (charsArray[j + 1].length);
       else delay -= charStagger * (charsArray[j].length);
       let delayAfter = delay + charStagger * (charsArray[j].length);
-      delayAfter += j < sentences.length - 1 ? 1500 : 0;
+      delayAfter += 1500;
       let length = delayAfter - delay;
+      let complete = charTime + delayAfter + length;
+      complete -= j < sentences.length - 1 ? 0 : 1500;
 
       timing.push({
         delay: delay,
         delayAfter: delayAfter,
         length: length,
-        complete: charTime + delayAfter + length
+        complete: complete
       });
     });
 
