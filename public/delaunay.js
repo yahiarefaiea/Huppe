@@ -1799,6 +1799,7 @@ c);e.bind(this.domElement,"transitionend",c);e.bind(this.domElement,"oTransition
     window.addEventListener('resize', onWindowResize);
     // container.addEventListener('mousemove', onMouseMove);
     document.querySelector('body').addEventListener('mousemove', onMouseMove);
+    document.querySelector('body').addEventListener('touchmove', onMouseMove);
   }
 
   function addControls() {
@@ -1936,9 +1937,11 @@ c);e.bind(this.domElement,"transitionend",c);e.bind(this.domElement,"oTransition
   }
 
   function onMouseMove(event) {
+    let x = event.x ? event.x : event.touches[0].clientX;
+    let y = event.y ? event.y : event.touches[0].clientY;
     if(LIGHT.pickedup){
-      LIGHT.xPos = event.x - renderer.width/2;
-      LIGHT.yPos = renderer.height/2 -event.y;
+      LIGHT.xPos = x - renderer.width/2;
+      LIGHT.yPos = renderer.height/2 - y;
       LIGHT.proxy.setPosition(LIGHT.xPos, LIGHT.yPos, LIGHT.proxy.position[2]);
     } 
   }
