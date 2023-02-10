@@ -961,9 +961,10 @@
       let delayAfter = timing[j].delayAfter;
       gsap.utils.toArray(chars).forEach((char, i) => {
         // show sentence
-        timeline.fromTo(char, {drawSVG: 0}, {
+        timeline.fromTo(char, {drawSVG: 0, opacity: 0}, {
           duration: 1.5,
           drawSVG: '100%',
+          opacity: 1,
           scrollTrigger: {
             trigger: 'body',
             start: delay + (charStagger * i),
@@ -973,9 +974,10 @@
             // hide sentence
             onLeave: function(e) {
               if(j < sentences.length - 1) {
-                timeline.fromTo(char, {drawSVG: '100%'}, {
+                timeline.fromTo(char, {drawSVG: '100%', opacity: 1}, {
                   duration: 1.5,
                   drawSVG: '100% 100%',
+                  opacity: 0,
                   scrollTrigger: {
                     trigger: 'body',
                     start: delayAfter + (charStagger * i),
