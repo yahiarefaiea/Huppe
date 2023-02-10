@@ -993,13 +993,15 @@
     });
     
     // draw line path
+    const lineEnd = `+=${3300 - 185 - window.innerHeight/2}`
+    const lineSMEnd = `+=${5812 - 907 - window.innerHeight/2}`
     timeline.to([line, lineSM], {
       duration: 1.5,
       drawSVG: '100%',
       scrollTrigger: {
         trigger: 'body',
         start: charsMath,
-        end: window.innerWidth <= 838 ? 'bottom 110%' : `bottom 100%`,
+        end: window.innerWidth <= 838 ? lineSMEnd : lineEnd,
         scrub: 1
       }
     });
