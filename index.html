@@ -878,6 +878,7 @@
     const charsArray = [];
     const charTime = 200;
     const charStagger = 50;
+    const visibilityTime = 1500;
     const sentencesSelector = [
       '#we-raise-your-value',
       '#catalyst-for-change',
@@ -914,7 +915,7 @@
     sentences.forEach((sentence, j) => {
       let delay = 0;
       for(let k = 0; k <= j; k++) {
-        delay += k !== 0 ? 1500 : 0;
+        delay += k !== 0 ? visibilityTime : 0;
         delay += charStagger * (charsArray[k].length);
         if(j < sentences.length - 1 || k < sentences.length - 1)
           delay += charStagger * (charsArray[k + 1].length);
@@ -925,11 +926,11 @@
       delay -= charStagger * (charsArray[j + 1].length);
       else delay -= charStagger * (charsArray[j].length);
       let delayAfter = delay + charStagger * (charsArray[j].length);
-      delayAfter += 1500;
+      delayAfter += visibilityTime;
       let length = delayAfter - delay;
-      length -= j < sentences.length - 1 ? 0 : 1500;
+      length -= j < sentences.length - 1 ? 0 : visibilityTime;
       let complete = charTime + delayAfter + length;
-      complete -= j < sentences.length - 1 ? 0 : 1500;
+      complete -= j < sentences.length - 1 ? 0 : visibilityTime;
 
       timing.push({
         delay: delay,
