@@ -591,7 +591,7 @@
     #main-wrapper {
       z-index: 50;
       position: fixed;
-      top: 604.5px;
+      top: 50%;
       left: 50%;
       margin-left: -399px;
     }
@@ -625,7 +625,7 @@
     #your-change-agent {
       z-index: 499;
       position: fixed;
-      top: 350px;
+      top: 50%;
       left: 50%;
       height: 56px;
       pointer-events: none;
@@ -942,11 +942,11 @@
 
     // setup
     const charsMath = timing[sentences.length - 1].complete;
-    const lineContainerOffset = 0;
-    const bodyOffset = (947 - 350) + charsMath;
-    gsap.set('#main-header', {height: bodyOffset + wrapper.offsetHeight});
+    const lineContainerOffset = window.innerHeight/2 - 350;
+    const bodyOffset = (947 - window.innerHeight/2) + charsMath;
+    gsap.set('#main-header', {height: bodyOffset + wrapper.offsetHeight + 254.5});
     setTimeout(() => {
-      gsap.set('#main-header', {height: bodyOffset + wrapper.offsetHeight});
+      gsap.set('#main-header', {height: bodyOffset + wrapper.offsetHeight + 254.5});
     }, 1500);
     gsap.set(charsAll, {drawSVG: 0, visibility: 'visible'});
     gsap.set([lineContainer, lineSMContainer], {top: lineContainerOffset});
@@ -1024,13 +1024,13 @@
     });
 
     // move wrapper on scroll
-    const h = window.innerHeight - 604.5;
+    const h = window.innerHeight/2;
     timeline.fromTo(wrapper, {y: 0 + h}, {
       duration: 1.5,
       y: -6600 + h,
       scrollTrigger: {
         trigger: 'body',
-        start: charsMath - h,
+        start: charsMath - h + 254.5,
         end: '+=6600',
         scrub: 1
       }
